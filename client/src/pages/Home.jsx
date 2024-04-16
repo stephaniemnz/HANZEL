@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import '.home.css';
 
 const gallery = [
     { id: 1, title: "Gallery 1", image: "https://via.placeholder.com/150", price: '30.00'},
