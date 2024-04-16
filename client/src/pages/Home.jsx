@@ -16,7 +16,8 @@ const gallery = [
 function Home() {
     return (
         <div>
-            <h1>Welcome</h1>
+            <h1>HANZEL ORIGINALS</h1>
+            <h2>Ryan Hanzel Photography</h2>
             <div className="gallery">
                 {gallery.map((item) => (
                     <div key={item.id} className="gallery-item">
