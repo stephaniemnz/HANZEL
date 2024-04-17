@@ -1,42 +1,3 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react';
-
-const Photo = ({ photoId }) => {
-  const [upvotes, setUpvotes] = useState(0);
-
-  useEffect(() => {
-    const fetchUpvotes = async () => {
-      try {
-        // Simulating a fetch request using setTimeout
-        // Replace this with your actual fetch logic
-        setTimeout(() => {
-          // Example: Fetch upvote count from server
-          const initialUpvotes = Math.floor(Math.random() * 100); // Example initial upvote count
-          setUpvotes(initialUpvotes);
-        }, 1000); // Simulate loading for 1 second
-      } catch (error) {
-        console.error('Error fetching upvotes:', error);
-      }
-    };
-
-    fetchUpvotes();
-
-  }, [photoId]); // Fetch upvotes when photoId changes
-
-  const handleUpvote = () => {
-    // Update upvote count locally
-    setUpvotes(prevUpvotes => prevUpvotes + 1);
-    // Example: Make API request to server to upvote photo
-    // Replace this with your actual upvote logic
-    console.log('Upvoted photo:', photoId);
-  };
-
-  return (
-    <div>
-      <img src={`https://example.com/photos/${photoId}`} alt="Photo" />
-      <p>Upvotes: {upvotes}</p>
-      <button onClick={handleUpvote}>Upvote</button>
-=======
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Icon } from "semantic-ui-react";
@@ -124,13 +85,8 @@ const Photo = ({ item }) => {
       </VotingSection>
 
       <button>Add to Cart</button>
->>>>>>> 6ab1c7439cb3d26e25cf81810dfdca8f6265168d
     </div>
   );
 };
 
-<<<<<<< HEAD
 export default Photo;
-=======
-export default Photo;
->>>>>>> 6ab1c7439cb3d26e25cf81810dfdca8f6265168d
