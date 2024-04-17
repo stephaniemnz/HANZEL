@@ -8,8 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes);
+// const apiRoutes = require('./routes/api');
+// app.use('/api', apiRoutes);
 
 // Static files
 app.use(express.static(path.join(__dirname, '/', '../client')));
