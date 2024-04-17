@@ -10,25 +10,20 @@ module.exports = {
             code: 'UNAUTHENTICATED',
         },
     }),
-    authMiddleware: function ({ req }) {
-        let token = req.body.token || req.query.token || req.headers.authorization;
-
-        if (req.headers.authorization) {
-            token = token.split(' ').pop().trim();
-        }
+    authMiddleware: async (req, res, next) => {
+        const token = req.header('Authorization');
 
         if (!token) {
-            return req;
+            throw new this.AuthenticationError('Access denied');
         }
 
         try {
-            const { data } = jwt.verify(token, secret, { maxAge: expiration });
-            req.user = data;
-        } catch {
-            console.log('Invalid token');
+            const decoded = jwt.verify(token, 'secret');
+            req.user = await User.findById(decoded.userId);
+            next();
+        } catch (error) {
+            throw new this.AuthenticationError('Invalid token');
         }
-
-        return req;
     },
     signToken: function ({ firstName, email, _id }) {
         const payload = { firstName, email, _id };
