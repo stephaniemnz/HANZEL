@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+package-lock.json
+**/package-lock.json
 
 node_modules
 client/node_modules
@@ -13,6 +15,7 @@ server/node_modules
 dist
 dist-ssr
 *.local
+reffiles
 
 # Editor directories and files
 .vscode/*
