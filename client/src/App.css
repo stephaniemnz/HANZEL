@@ -1,3 +1,11 @@
+
+body {
+  background-image: url('assets/Hanzel.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -17,6 +25,28 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+/*Gallery*/ 
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.gallery-item {
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 200px;
+  text-align: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+
 
 @keyframes logo-spin {
   from {
@@ -39,4 +69,12 @@
 
 .read-the-docs {
   color: #888;
+}
+@media (max-width: 768px) {
+  body {
+    background-image: url('assets/2.png'); /* Path to your mobile-optimized image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }
