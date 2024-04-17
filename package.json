@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "a gallery of awesomeness",
   "main": "server/server.js",
-
   "scripts": {
     "start": "node ./server/server.js",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
@@ -15,5 +14,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.9.11",
+    "graphql": "^16.8.1"
   }
 }

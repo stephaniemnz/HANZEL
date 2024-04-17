@@ -1,8 +1,25 @@
-import React, { useState } from 'react';    
+import React, { useState } from 'react'; 
+import {useMutation, gql} from '@apollo/client'; 
+import { Link } from 'react-router-dom';  
+import {LOGIN} from '../utils/mutations'; 
+import Auth from '../utils/auth';
+
+const LOGIN = gql`
+mutation loginUser($email: String!, $password: String!) {
+  loginUser(email: $email, password: $password) {
+    token
+    user {
+      _id
+    }
+  }
+}
+`;
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [login] = useMutation(LOGIN);
   
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
@@ -12,19 +29,25 @@ export default function Login() {
       setPassword(event.target.value);
     };
   
-    const handleLoginSubmit = (event) => {
+    const handleLoginSubmit = async (event) => {
       event.preventDefault();
-      console.log('Login Submitted');
-      console.log('Email:', email);
-      console.log('Password:', password);
-     //logic for authenticating user goes here
-    };
+      try {
+        const mutationResponse = await login({
+          variables: { email: formState.email, password: formState.password },
+        });
+        const token = mutationResponse.data.login.token;
+        Auth.login(token);
+        console.log('Login Succcessful', data);  
+      } catch (error) {
+        console.error('Login failed', error);
+      }
+    }; 
   
     const handleSignUpClick = () => {
       console.log('Sign Up button clicked');
     };
     return (    
-        <>
+    <>
       <div className="card">
         <form onSubmit={handleLoginSubmit} style={{ marginTop: '400px' }}>
           <div>
@@ -49,7 +72,11 @@ export default function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
-        <button onClick={handleSignUpClick} style={{ marginTop: '10px' }}>Sign Up</button>
+        <div>
+          <Link to="/signup" style={{ marginTop: '10px'}} onClick={handleSignUpClick}>
+            Sign Up
+          </Link>
+      </div>
       </div>
     </>
   );
