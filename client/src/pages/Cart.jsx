@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Header, Table, Segment } from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css';
+
 
 // Styled container for the cart
 const CartContainer = styled.div`
@@ -20,11 +22,14 @@ const Cart = () => {
     {
       image: "https://via.placeholder.com/50",
       name: "Photo 1",
-      price: 10,    },
+      price: 10,    
+      quantity: 1,
+    },
     {
       image: "https://via.placeholder.com/50",
       name: "Photo 2",
       price: 20,
+      quantity: 1,  
     },
   ];
 
