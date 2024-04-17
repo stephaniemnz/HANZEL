@@ -1,51 +1,28 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
-function Home() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="card">
-      <button onClick={() => setCount(count + 1)}>
-        count is {count}
-      </button>
-      <p>
-        Edit <code>src/App.jsx</code> and save to test HMR
-      </p>
-    </div>
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';  
+import './index.css';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Details from './pages/Details'; 
+import Purchase from './pages/Purchase'; 
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <Link to="/">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
-          </Link>
-          <Link to="/about">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </Link>
-        </nav>
-        <h1>Vite + React</h1>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-      </div>
-    </Router>
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/signUp" component={SignUp} />
+        <Route path="/details/:imageId" component={Details} />
+        <Route path="/purchase/:imageId" component={Purchase} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
+  </Router>
   );
-}
-
-function About() {
-  return <h2>About Page</h2>;
 }
 
 export default App;
