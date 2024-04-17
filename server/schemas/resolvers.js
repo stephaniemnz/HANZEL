@@ -67,6 +67,21 @@ const resolvers = {
     },
   },
   Mutation: {
+    addUser: async (parent, args) => {
+        const user = await User.create(args);
+        const token = signToken(user);
+  
+        return { token, user };
+      },
+      addOrder: async (parent, { products }, context) => {
+        if (context.user) {
+          const order = new Order({ products });
+  
+          await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+  
+          return order;
+        },
+        
     upvotePhoto: async (_, { id }) => {
       const photo = await Photo.findById(id);
       if (!photo) {
@@ -76,7 +91,24 @@ const resolvers = {
       await photo.save();
       return photo;
     },
-  },
-};
-
-module.exports = resolvers;
+    login: async (parent, { email, password }) => {
+        const user = await User.findOne({ email });
+  
+        if (!user) {
+          throw AuthenticationError;
+        }
+  
+        const correctPw = await user.isCorrectPassword(password);
+  
+        if (!correctPw) {
+          throw AuthenticationError;
+        }
+  
+        const token = signToken(user);
+  
+        return { token, user };
+      }
+    }
+  };
+  
+  module.exports = resolvers;
