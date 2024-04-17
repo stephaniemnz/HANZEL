@@ -13,15 +13,11 @@ const photoSchema = new Schema({
   imageUrl: {
     type: String,
     required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 });
 
 // Create the Photo model using the photoSchema
-const Photo = model('Photo', photoSchema);
+const Photo = mongoose.model('Photo', photoSchema);
 
 // Export the Photo model
 module.exports = Photo;

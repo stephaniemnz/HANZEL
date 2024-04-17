@@ -8,19 +8,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-const apiRoutes = require('./server/routes/api');
+const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
 // Static files
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/', '../client')));
 
 // Handle 404
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/', 'index.html'));
+    res.sendFile(path.join(__dirname, '/', '../client/index.html'));
 });
 
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
