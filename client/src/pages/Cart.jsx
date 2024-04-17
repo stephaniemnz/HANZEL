@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Header, Table, Segment } from "semantic-ui-react";
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 
 // Styled container for the cart
