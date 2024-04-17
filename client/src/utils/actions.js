@@ -1,0 +1,1 @@
+export const UPVOTE_PHOTO = "UPVOTE_PHOTO";
