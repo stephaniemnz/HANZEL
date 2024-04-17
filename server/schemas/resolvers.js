@@ -1,5 +1,5 @@
 const { User, Photo, Order } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { signToken, AuthenticationError, Auth } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -80,8 +80,8 @@ const resolvers = {
           await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
   
           return order;
-        },
-        
+        }
+      },
     upvotePhoto: async (_, { id }) => {
       const photo = await Photo.findById(id);
       if (!photo) {
@@ -107,8 +107,8 @@ const resolvers = {
         const token = signToken(user);
   
         return { token, user };
-      }
-    }
-  };
+    },
+  },
+}
   
   module.exports = resolvers;

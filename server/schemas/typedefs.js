@@ -14,7 +14,7 @@ const typeDefs = `
   type Order {
     _id: ID
     purchaseDate: String
-    products: [Product]
+    products: [Photo]
   }
 
   type User {
@@ -34,7 +34,12 @@ const typeDefs = `
     photo(_id: ID!): Photo
     user: User
     order(_id: ID!): Order
-    checkout(photos: [PhotoInput]): Checkout
+    checkout(_id: ID!): Checkout
+  }
+
+  type Auth {
+    token: String!
+    user: User!
   }
 
   type Mutation {
