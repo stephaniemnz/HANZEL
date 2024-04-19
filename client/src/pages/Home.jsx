@@ -73,7 +73,7 @@ const saleItem = {
 };
 
 function Home() {
-  const [saleStatus, setSaleStatus] = useState(true);
+  const [saleStatus, setSaleStatus] = useState(false);
   // Move the cart into context to share it in global state
   // const [cart, setCart] = useState([]);
 
