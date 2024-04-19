@@ -1,10 +1,10 @@
 import React, { useState } from 'react'; 
 import {useMutation, gql} from '@apollo/client'; 
 import { Link } from 'react-router-dom';  
-import {LOGIN} from '../utils/mutations'; 
+import {LOGIN as LOGIN_MUTATION} from '../utils/mutations'; // Renamed the imported LOGIN to LOGIN_MUTATION
 import Auth from '../utils/auth';
 
-const LOGIN = gql`
+const LOGIN_ = gql`
 mutation loginUser($email: String!, $password: String!) {
   loginUser(email: $email, password: $password) {
     token
