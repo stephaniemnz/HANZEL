@@ -1,4 +1,6 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
+// const { Schema, model } = require('mongoose');
 
 // Define the schema for your photo model
 const photoSchema = new Schema({
@@ -13,15 +15,11 @@ const photoSchema = new Schema({
   imageUrl: {
     type: String,
     required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 });
 
 // Create the Photo model using the photoSchema
-const Photo = model('Photo', photoSchema);
+const Photo = mongoose.model('Photo', photoSchema);
 
 // Export the Photo model
 module.exports = Photo;

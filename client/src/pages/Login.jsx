@@ -1,8 +1,15 @@
-import React, { useState } from 'react';    
+import React, { useState } from 'react'; 
+import { useMutation, gql } from '@apollo/client'; 
+import { Link } from 'react-router-dom';  
+import {LOGIN} from '../utils/mutations'; // Renamed the imported LOGIN to LOGIN_MUTATION
+import Auth from '../utils/auth';
+
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [login] = useMutation(LOGIN);
   
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
@@ -12,21 +19,23 @@ export default function Login() {
       setPassword(event.target.value);
     };
   
-    const handleLoginSubmit = (event) => {
+    const handleLoginSubmit = async (event) => {
       event.preventDefault();
-      console.log('Login Submitted');
-      console.log('Email:', email);
-      console.log('Password:', password);
-     //logic for authenticating user goes here
-    };
+      try {
+        const mutationResponse = await login({
+          variables: { email, password },
+        });
+        const token = mutationResponse.data.login.token;
+        Auth.login(token); // Assuming this method exists and properly handles the token
+      } catch (error) {
+        console.error('Login failed', error);
+      }
+    }; 
   
-    const handleSignUpClick = () => {
-      console.log('Sign Up button clicked');
-    };
     return (    
-        <>
+    <>
       <div className="card">
-        <form onSubmit={handleLoginSubmit} style={{ marginTop: '400px' }}>
+        <form onSubmit={handleLoginSubmit}>
           <div>
             <label htmlFor="email">Email:</label>
             <input
@@ -49,7 +58,7 @@ export default function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
-        <button onClick={handleSignUpClick} style={{ marginTop: '10px' }}>Sign Up</button>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </>
   );
