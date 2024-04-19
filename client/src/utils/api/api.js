@@ -1,6 +1,6 @@
-const API_BASE_URL = 'https://api.example.com'; // Replace with your actual API base URL
+const API_BASE_URL = 'https://api.example.com'; // Replace with actual API base URL
 
-// Function to handle API errors
+
 const handleResponse = async (response) => {
     if (!response.ok) {
         const message = await response.text();
@@ -9,17 +9,16 @@ const handleResponse = async (response) => {
     return response.json();
 };
 
-// Function to fetch galleries
+
 export const fetchGalleries = () => {
     return fetch(`${API_BASE_URL}/galleries`)
         .then(handleResponse)
         .catch(error => {
             console.error('Fetching galleries failed:', error);
-            throw error; // Re-throw to let calling function handle it
+            throw error; 
         });
 };
 
-// Function to fetch details of a single gallery
 export const fetchGalleryById = (id) => {
     return fetch(`${API_BASE_URL}/galleries/${id}`)
         .then(handleResponse)
@@ -29,7 +28,7 @@ export const fetchGalleryById = (id) => {
         });
 };
 
-// Post data to the server (example: sending a contact form)
+
 export const postContactForm = (formData) => {
     return fetch(`${API_BASE_URL}/contact`, {
         method: 'POST',

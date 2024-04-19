@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; 
-import {useMutation, gql} from '@apollo/client'; 
+import { useMutation, gql } from '@apollo/client'; 
 import { Link } from 'react-router-dom';  
 import {LOGIN} from '../utils/mutations'; // Renamed the imported LOGIN to LOGIN_MUTATION
 import Auth from '../utils/auth';
@@ -23,23 +23,19 @@ export default function Login() {
       event.preventDefault();
       try {
         const mutationResponse = await login({
-          variables: { email: formState.email, password: formState.password },
+          variables: { email, password },
         });
         const token = mutationResponse.data.login.token;
-        Auth.login(token);
-        console.log('Login Succcessful', data);  
+        Auth.login(token); // Assuming this method exists and properly handles the token
       } catch (error) {
         console.error('Login failed', error);
       }
     }; 
   
-    const handleSignUpClick = () => {
-      console.log('Sign Up button clicked');
-    };
     return (    
     <>
       <div className="card">
-        <form onSubmit={handleLoginSubmit} style={{ marginTop: '400px' }}>
+        <form onSubmit={handleLoginSubmit}>
           <div>
             <label htmlFor="email">Email:</label>
             <input
@@ -62,11 +58,7 @@ export default function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
-        <div>
-          <Link to="/signup" style={{ marginTop: '10px'}} onClick={handleSignUpClick}>
-            Sign Up
-          </Link>
-      </div>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </>
   );
