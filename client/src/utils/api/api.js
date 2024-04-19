@@ -1,6 +1,5 @@
 const API_BASE_URL = 'https://api.example.com'; // Replace with your actual API base URL
 
-// Function to handle API errors
 const handleResponse = async (response) => {
     if (!response.ok) {
         const message = await response.text();
@@ -9,7 +8,7 @@ const handleResponse = async (response) => {
     return response.json();
 };
 
-// Function to fetch galleries
+
 export const fetchGalleries = () => {
     return fetch(`${API_BASE_URL}/galleries`)
         .then(handleResponse)
@@ -19,7 +18,6 @@ export const fetchGalleries = () => {
         });
 };
 
-// Function to fetch details of a single gallery
 export const fetchGalleryById = (id) => {
     return fetch(`${API_BASE_URL}/galleries/${id}`)
         .then(handleResponse)
