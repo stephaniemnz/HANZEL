@@ -54,6 +54,10 @@ const gallery = [
 ];
 
 function Home() {
+  const [cart, setCart] = useState([]);
+  const addToCart = (item) => {     
+    setCart([...cart, item]);  
+  };
     return (
         <div>
             <h1>HANZEL ORIGINALS</h1>
@@ -61,7 +65,7 @@ function Home() {
             <div className="gallery">
                 {gallery.map((item) => (
                     <div key={item.id} className="gallery-item">
-                        <img src={item.image} alt={item.title} />
+                        <Photo item={item} />
                         <h3>{item.title}</h3>
                         <p>${item.price}</p>
                         <button>Add to Cart</button>
