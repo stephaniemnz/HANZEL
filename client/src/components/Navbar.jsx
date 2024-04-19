@@ -69,15 +69,6 @@ const Navbar = () => {
               as={Link}
               to="/purchase"
             >
-              Purchase
-            </Menu.Item>
-            <Menu.Item
-              name="cart"
-              active={activeItem === "cart"}
-              onClick={handleItemClick}
-              as={Link}
-              to="/cart"
-            >
               <Icon name="cart" />
               Cart
             </Menu.Item>
@@ -113,15 +104,7 @@ const Navbar = () => {
           >
             Login
           </Menu.Item>
-          <Menu.Item
-            name="purchase"
-            active={activeItem === "purchase"}
-            onClick={handleItemClick}
-            as={Link}
-            to="/purchase"
-          >
-            Purchase
-          </Menu.Item>
+          
           <Menu.Menu position="right">
             <Menu.Item>
               <Input icon="search" placeholder="Search..." />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import { Button, Header, Table, Segment } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
@@ -17,29 +17,27 @@ const StyledTotal = styled(Header)`
 `;
 
 const Cart = () => {
-  // Dummy cart items
-  const cartItems = [
-    {
-      image: "https://via.placeholder.com/50",
-      name: "Photo 1",
-      price: 10,    
-      quantity: 1,
-    },
-    {
-      image: "https://via.placeholder.com/50",
-      name: "Photo 2",
-      price: 20,
-      quantity: 1,  
-    },
-  ];
+   const [cartItems, setCartItems] = useState([]); 
+  
+  const addToCart = (item) => {
+    const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
 
-  // Calculate total price
+    if (existingItem) {
+
+      setCart(cartItems.map(cartItem =>
+        cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+      ));
+    } else {
+  
+      setCart([...cartItems, { ...item, quantity: 1 }]);
+    }
+  };
+
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
-  // Handle checkout (for now, just show an alert)
   const onCheckout = () => {
     alert("Checkout not implemented yet!");
   };

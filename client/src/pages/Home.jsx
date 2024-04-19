@@ -18,7 +18,16 @@ function Home() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCart(cart.map(cartItem =>
+          cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+        )
+      );
+      return;
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
   };
 
   return (
@@ -33,7 +42,10 @@ function Home() {
             </Link>
             <h3>{item.title}</h3>
             <p>${item.price}</p>
-            <button onClick={() => addToCart(item)}>Add to Cart</button>
+            <button onClick={(event) =>{
+              event.preventDefault();
+              addToCart(item);
+            }}>Add to Cart</button>
           </div>
         ))}
       </div>
