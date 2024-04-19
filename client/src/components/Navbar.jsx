@@ -46,7 +46,7 @@ const Navbar = () => {
           >
             <Menu.Item
               name="home"
-              active={activeItem === "home"}
+              active={activeItem ? "home" : undefined}
               onClick={handleItemClick}
               as={Link}
               to="/"

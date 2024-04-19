@@ -69,7 +69,7 @@ const Photo = ({ item }) => {
       <VotingSection>
         <VoteButton
           onClick={handleUpvote}
-          active={voteDirection === "upvote"}
+          active={voteDirection ? "upvote" : undefined}
           type="up"
         >
           <Icon name="arrow alternate circle up outline" />
@@ -77,7 +77,7 @@ const Photo = ({ item }) => {
         <VoteCount>{voteCount}</VoteCount>
         <VoteButton
           onClick={handleDownvote}
-          active={voteDirection === "downvote"}
+          active={voteDirection ? "downvote" : undefined}
           type="down"
         >
           <Icon name="arrow alternate circle down outline" />
