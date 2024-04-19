@@ -1,25 +1,46 @@
 const express = require('express');
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
+const { authMiddleware } = require('./utils/auth');
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+const jwt = require('jsonwebtoken');
+
+const PORT = process.env.PORT || 3001;
 const app = express();
-const port = process.env.PORT || 3000;
-
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Routes
-const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes);
-
-// Static files
-app.use(express.static(path.join(__dirname, '/', '../client')));
-
-// Handle 404
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/', '../client/index.html'));
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    introspection: true,
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+const startApolloServer = async () => {
+    await server.start();
+
+    app.use(express.urlencoded({
+        extended: false
+    }));
+
+    app.use(express.json());
+    // app.use('/images', express.static(path.join(__dirname, 'images')));
+
+    app.use('/graphql', expressMiddleware(server, {
+        context: authMiddleware
+    }));
+
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+
+    db.once('open', () => {
+        app.listen(PORT, () => {
+            console.log(`API server running on port ${PORT}`);
+            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+        });
+    });
+};
+
+startApolloServer();

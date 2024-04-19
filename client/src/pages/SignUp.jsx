@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
+//import Auth from '../utils/auth';
+//
 import { ADD_USER } from '../utils/mutations';
 
 function Signup() {
@@ -45,7 +46,7 @@ function Signup() {
           <input
             placeholder="First"
             name="firstName"
-            type="firstName"
+            type="text"
             id="firstName"
             onChange={handleChange}
           />
@@ -55,7 +56,7 @@ function Signup() {
           <input
             placeholder="Last"
             name="lastName"
-            type="lastName"
+            type="text"
             id="lastName"
             onChange={handleChange}
           />

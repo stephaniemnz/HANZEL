@@ -1,4 +1,6 @@
-const { Schema, model } = request('mongoose');
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
+// const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema ({

@@ -1,4 +1,6 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
+// const { Schema, model } = require('mongoose');
 
 // Define the schema for your photo model
 const photoSchema = new Schema({
