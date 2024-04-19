@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Photo from "../components/Photo";
 import { useState } from "react";
 
+
+
 const gallery = [
   { id: 1, title: "Gallery 1", image: "https://via.placeholder.com/150", price: '30.00' },
   { id: 2, title: "Gallery 2", image: "https://via.placeholder.com/150", price: '40.00' },

@@ -4,7 +4,6 @@
 // import App from "./App";
 // import Home from "./pages/Home";
 // import Login from "./pages/Login";
-// import Purchase from "./pages/Purchase";
 // import Cart from "./pages/Cart";
 // import Signup from "./pages/SignUp";  
 // import Details from "./pages/Details";
@@ -16,7 +15,6 @@
 //         <Route exact path="/" component={App} />
 //         <Route path="/home" component={Home} />
 //         <Route path="/login" component={Login} />
-//         <Route path="/purchase" component={Purchase} />
 //         <Route path="/cart" component={Cart} />
 //         <Route path="/signup" component={Signup} />
 //         <Route path="/details/:title" component={Details} />
@@ -39,6 +37,7 @@ import { setContext } from '@apollo/client/link/context';
 // import { Provider } from 'react-redux';
 // import store from './utils/store';
 import Navbar from './components/Navbar';
+import './index.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

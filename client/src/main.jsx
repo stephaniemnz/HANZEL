@@ -6,7 +6,6 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Purchase from "./pages/Purchase";
 import Cart from "./pages/Cart";
 import Signup from "./pages/SignUp";  
 import Details from "./pages/Details";
@@ -24,10 +23,6 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
-      },
-      {
-        path: "/purchase",
-        element: <Purchase />,
       },
       {
         path: "/cart",
