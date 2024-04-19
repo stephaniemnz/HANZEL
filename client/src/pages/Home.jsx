@@ -68,7 +68,7 @@ function Home() {
                         <Photo item={item} />
                         <h3>{item.title}</h3>
                         <p>${item.price}</p>
-                        <button>Add to Cart</button>
+                        <button onClick={() => addToCart(item)}>Add to Cart</button>
                     </div>
                 ))}
             </div>
