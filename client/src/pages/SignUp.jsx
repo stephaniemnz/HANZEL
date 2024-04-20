@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 //
@@ -8,6 +8,15 @@ import { ADD_USER } from '../utils/mutations';
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: ''});
   const [addUser] = useMutation(ADD_USER);
+  const location = useLocation();
+  const backgroundClass = location.pathname === '/' ? 'home-background' : 'login-background';
+
+useEffect(() => { 
+  document.body.className = backgroundClass;
+    return () => {
+      document.body.className = '';
+    };
+  }, [backgroundClass]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -36,8 +45,8 @@ function Signup() {
   };
 
   return (
-    <div className="card" style={{ marginTop: '475px', color: 'white'}}>
-      <h2>Join HANZEL</h2>
+    <div className="card" style={{ marginTop: '425px', color: 'white'}}>
+      <h2>Join Us</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
@@ -83,7 +92,7 @@ function Signup() {
           <button type="submit">Submit</button> 
         </div>
       </form>
-      <Link style={{ color: 'white'}} to="/login">Login</Link>
+      <Link style={{ color: 'white'}} to="/login">Already have an account? Login</Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { useMutation, gql } from '@apollo/client'; 
-import { Link } from 'react-router-dom';  
+import { Link, useLocation } from 'react-router-dom';  
 import {LOGIN} from '../utils/mutations'; // Renamed the imported LOGIN to LOGIN_MUTATION
 import Auth from '../utils/auth';
 
@@ -8,9 +8,20 @@ import Auth from '../utils/auth';
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const [login] = useMutation(LOGIN);
   
+    
+
+    const location = useLocation();
+    const backgroundClass = location.pathname === '/' ? 'home-background' : 'login-background';
+  
+    useEffect(() => {
+      document.body.className = backgroundClass;
+      return () => {
+        document.body.className = '';
+      };  
+    }, [backgroundClass]);
+
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
     };
@@ -26,16 +37,15 @@ export default function Login() {
           variables: { email, password },
         });
         const token = mutationResponse.data.login.token;
-        Auth.login(token); // Assuming this method exists and properly handles the token
+        Auth.login(token);
       } catch (error) {
         console.error('Login failed', error);
       }
     }; 
-  
 
     return (    
     <>
-      <div className="card" style={{ marginTop: '475px', color: 'white'}} >
+      <div className= "card"  style={{ marginTop: '425px', color: 'white'}} >
         <form onSubmit={handleLoginSubmit}>
           <div>
             <label htmlFor="email">Email:</label>
@@ -59,7 +69,7 @@ export default function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
-        <Link style={{ color: 'white'}} to="/signup">Sign Up</Link>
+        <Link style={{ color:'white'}} to="/signup">Sign Up</Link>
       </div>
     </>
   );

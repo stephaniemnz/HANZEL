@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-  background-image: url('./assets/Hanzel.png');
+  background-image: url('./assets/Hanzel2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -16,13 +16,18 @@ body {
 .home-background {
   background-image: url('./assets/Hanzel2.png');
   background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+
 }
 
 .login-background {
   background-image: url('./assets/Hanzel.png');
   background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 nav {
