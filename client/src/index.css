@@ -1,8 +1,39 @@
+html, body {
+  height: 100%; 
+  margin: 0;     
+  padding: 0;         
+  overflow-x: hidden;
+}
+
 body {
   background-image: url('./assets/Hanzel.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
+}
+
+.home-background {
+  background-image: url('./assets/Hanzel2.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-background {
+  background-image: url('./assets/Hanzel.png');
+  background-size: cover;
+  background-position: center;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+h1, h2 {
+  color: white; /* Set the color to white */
 }
 
 #root {
@@ -30,6 +61,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
+  color: #ccc;
 }
 
 .gallery-item {
@@ -45,7 +77,10 @@ body {
   margin-bottom: 8px;
 }
 
-
+font {
+  font-family: 'Roboto', sans-serif;
+  color: #ccc;
+} 
 
 @keyframes logo-spin {
   from {
@@ -71,7 +106,7 @@ body {
 }
 @media (max-width: 768px) {
   body {
-    background-image: url('assets/2.png'); 
+    background-image: url('assets/3.png'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

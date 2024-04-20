@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Photo from "../components/Photo";
 import { useState } from "react";
+
 
 
 
@@ -19,6 +20,10 @@ const gallery = [
 function Home() {
   const [cart, setCart] = useState([]);
 
+  const location = useLocation();
+  const backgroundClass = location.pathname === '' ? 'login-background' : 'home-background';
+
+
   const addToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
@@ -31,23 +36,18 @@ function Home() {
       setCart([...cart, { ...item, quantity: 1 }]);
     }
   };
+ 
 
   return (
-    <div>
+    <div className= {backgroundClass}>
       <h1>HANZEL ORIGINALS</h1>
       <h2>Ryan Hanzel Photography</h2>
       <div className="gallery">
         {gallery.map((item) => (
           <div key={item.id} className="gallery-item">
-            <Link to={`/details/${item.id}`}>
+            <Link to={`/Details ${item.id}`}>
               <Photo item={item} />
             </Link>
-            <h3>{item.title}</h3>
-            <p>${item.price}</p>
-            <button onClick={(event) =>{
-              event.preventDefault();
-              addToCart(item);
-            }}>Add to Cart</button>
           </div>
         ))}
       </div>

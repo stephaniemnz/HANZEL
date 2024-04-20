@@ -3,6 +3,7 @@ import { Menu, Input, Icon, Sidebar } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
+
 const Navbar = () => {
   const [activeItem, setActiveItem] = useState("home");
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -29,7 +30,7 @@ const Navbar = () => {
             <Menu.Menu position="right">
               {/* Toggle button for small and medium screens */}
               <Menu.Item onClick={handleToggle}>
-                <Icon name="bars" />
+                <Icon name="bars"  style={{ color: 'white' }}/>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
@@ -70,7 +71,7 @@ const Navbar = () => {
               as={Link}
               to="/cart"
             >
-              <Icon name="cart" />
+              <Icon name="cart" style={{ color: 'white' }}/>
               Cart
             </Menu.Item>
             <Menu.Item
@@ -93,6 +94,7 @@ const Navbar = () => {
             onClick={handleItemClick}
             as={Link}
             to="/"
+            style={{ color: 'white' }}
           >
             Home
           </Menu.Item>
@@ -102,6 +104,7 @@ const Navbar = () => {
             onClick={handleItemClick}
             as={Link}
             to="/login"
+            style={{ color: 'white' }}
           >
             Login
           </Menu.Item>
@@ -116,8 +119,9 @@ const Navbar = () => {
               onClick={handleItemClick}
               as={Link}
               to="/cart"
+              style={{ color: 'white' }}
             >
-              <Icon name="cart" />
+            <Icon name="cart" style={{ color: 'white' }}/>
             </Menu.Item>
             <Menu.Item
               name="logout"
@@ -125,6 +129,7 @@ const Navbar = () => {
               onClick={handleItemClick}
               as={Link}
               to="/logout"
+              style={{ color: 'white' }}
             >
               Logout
             </Menu.Item>
