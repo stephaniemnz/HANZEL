@@ -1,76 +1,90 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { Store } from "../Store";
 
 const VotingSection = styled.div`
   margin-bottom: 10px;
 `;
 
-const LikeButton = styled.button`
+const VoteButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: ${(props) => (props.active ? "#ff4500" : "#000")};
+  color: ${(props) =>
+    props.active ? "#ff4500" : "#000"};
 
   &:hover {
-    color: #ff6347;
+    color: ${(props) => (props.type === "up" ? "#00cc00" : "#ff6347")};
   }
 `;
 
-const LikeCount = styled.span`
+const VoteCount = styled.span`
   font-size: 1.2rem;
   margin: 0 10px;
 `;
 
 const Photo = ({ item }) => {
-  const { state, dispatch } = useContext(Store);
-  const {
-    cart: { cartItems },
-  } = state;
-  const [likeCount, setLikeCount] = useState(item.upvotes);
-  const [liked, setLiked] = useState(false);
+  const [voteCount, setVoteCount] = useState(0);
+  const [voteDirection, setVoteDirection] = useState(null);
 
-  const handleLike = () => {
-    if (liked) {
-      // Unlike the item
-      setLikeCount(likeCount - 1);
-      setLiked(false);
+  const handleUpvote = () => {
+    if (voteDirection === "upvote") {
+      // Reset upvote
+      setVoteCount(voteCount - 1);
+      setVoteDirection(null);
     } else {
-      // Like the item
-      setLikeCount(likeCount + 1);
-      setLiked(true);
+      // Update vote count and direction
+      if (voteDirection === "downvote") {
+        setVoteCount(voteCount + 2);
+      } else {
+        setVoteCount(voteCount + 1);
+      }
+      setVoteDirection("upvote");
     }
   };
 
-  const addtoCart = () => {
-    dispatch({
-      type: "CART_ADD_ITEM",
-      payload: item,
-    });
+  const handleDownvote = () => {
+    if (voteDirection === "downvote") {
+      // Reset downvote
+      setVoteCount(voteCount + 1);
+      setVoteDirection(null);
+    } else {
+      // Update vote count and direction
+      if (voteDirection === "upvote") {
+        setVoteCount(voteCount - 2);
+      } else {
+        setVoteCount(voteCount - 1);
+      }
+      setVoteDirection("downvote");
+    }
   };
 
   return (
     <div className="gallery-item">
-      <Link to={`/details/${item.id}`}>
-        <img src={item.image} alt={item.title} />
-        <h3>{item.title}</h3>
-        <p>${item.price}</p>
-      </Link>
+      <img src={item.image} alt={item.title} />
+      <h3>{item.title}</h3>
+      <p>${item.price}</p>
 
-      {/* Like section */}
+      {/* Voting section */}
       <VotingSection>
-        <LikeButton onClick={handleLike} active={liked}>
-          <Icon
-            name={liked ? "heart" : "heart outline"}
-            color={liked ? "red" : undefined}
-          />
-        </LikeButton>
-        <LikeCount>{likeCount}</LikeCount>
+        <VoteButton
+          onClick={handleUpvote}
+          active={voteDirection ? "upvote" : undefined}
+          type="up"
+        >
+          <Icon name="arrow alternate circle up outline" />
+        </VoteButton>
+        <VoteCount>{voteCount}</VoteCount>
+        <VoteButton
+          onClick={handleDownvote}
+          active={voteDirection ? "downvote" : undefined}
+          type="down"
+        >
+          <Icon name="arrow alternate circle down outline" />
+        </VoteButton>
       </VotingSection>
 
-      <button onClick={addtoCart}>Add to Cart</button>
+      <button>Add to Cart</button>
     </div>
   );
 };
