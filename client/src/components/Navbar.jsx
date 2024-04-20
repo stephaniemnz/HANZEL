@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useRef } from "react";
 import { Menu, Input, Icon, Sidebar } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -13,11 +12,13 @@ const Navbar = () => {
     setActiveItem(name);
     setSidebarVisible(false);
   };
-
+  const nodeRef = useRef(null);
+  // Toggle sidebar visibility
   const handleToggle = () => {
     setSidebarVisible(!sidebarVisible);
   };
 
+  // Check if the screen size is small or medium
   const isSmallOrMediumScreen = useMediaQuery({ maxWidth: 992 });
 
   return (
