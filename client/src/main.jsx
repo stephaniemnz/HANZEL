@@ -7,9 +7,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import Signup from "./pages/SignUp";
+import Signup from "./pages/SignUp";  
 import Details from "./pages/Details";
-import { StoreProvider } from "./Store";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +33,8 @@ const router = createBrowserRouter([
         element: <h1>Page not found</h1>,
       },
       {
-        path: "/Signup",
-        element: <Signup />,
+        path:"/Signup",     
+        element: <Signup />,  
       },
       {
         path: "/details/:title",
@@ -46,9 +45,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <StoreProvider>
+  <React.StrictMode>
     <RouterProvider router={router} />
-  </StoreProvider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
