@@ -68,3 +68,15 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const GET_IMAGE_DETAILS = gql`
+query GetImageDetails($imageId: ID!) {
+  getImageDetails(imageId: $imageId) {
+    id
+    title
+    description
+    imageUrl
+    price   
+  }
+}
+`;

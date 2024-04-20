@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Photo from "../components/Photo";
 import { useState } from "react";
-import SaleItem from "../components/SaleItem";
+
+
+
 
 const gallery = [
   {
@@ -73,34 +75,38 @@ const saleItem = {
 };
 
 function Home() {
-  const [saleStatus, setSaleStatus] = useState(false);
-  // Move the cart into context to share it in global state
-  // const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  // const addToCart = (item) => {
-  //   const existingItem = cart.find((cartItem) => cartItem.id === item.id);
-  //   if (existingItem) {
-  //     setCart(
-  //       cart.map((cartItem) =>
-  //         cartItem.id === item.id
-  //           ? { ...cartItem, quantity: cartItem.quantity + 1 }
-  //           : cartItem
-  //       )
-  //     );
-  //     return;
-  //   } else {
-  //     setCart([...cart, { ...item, quantity: 1 }]);
-  //   }
-  // };
+  const location = useLocation();
+  const backgroundClass = location.pathname === '' ? 'login-background' : 'home-background';
+
+
+  const addToCart = (item) => {
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCart(cart.map(cartItem =>
+          cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+        )
+      );
+      return;
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
+  };
+ 
 
   return (
-    <div>
+    <div className= {backgroundClass}>
       <h1>HANZEL ORIGINALS</h1>
       {saleStatus && <SaleItem item={saleItem} />}
       <h2>Ryan Hanzel Photography</h2>
       <div className="gallery">
         {gallery.map((item) => (
-          <Photo item={item} key={item.id} />
+          <div key={item.id} className="gallery-item">
+            <Link to={`/Details ${item.id}`}>
+              <Photo item={item} />
+            </Link>
+          </div>
         ))}
       </div>
     </div>

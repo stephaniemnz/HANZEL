@@ -36,9 +36,7 @@ function Signup() {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/login">Login</Link>
-
+    <div className="card" style={{ marginTop: '475px', color: 'white'}}>
       <h2>Join HANZEL</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
@@ -82,9 +80,10 @@ function Signup() {
           />
         </div>
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <button type="submit">Submit</button> 
         </div>
       </form>
+      <Link style={{ color: 'white'}} to="/login">Login</Link>
     </div>
   );
 }

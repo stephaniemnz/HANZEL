@@ -32,9 +32,10 @@ export default function Login() {
       }
     }; 
   
+
     return (    
     <>
-      <div className="card">
+      <div className="card" style={{ marginTop: '475px', color: 'white'}} >
         <form onSubmit={handleLoginSubmit}>
           <div>
             <label htmlFor="email">Email:</label>
@@ -58,7 +59,7 @@ export default function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
-        <Link to="/signup">Sign Up</Link>
+        <Link style={{ color: 'white'}} to="/signup">Sign Up</Link>
       </div>
     </>
   );

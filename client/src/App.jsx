@@ -1,29 +1,28 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import App from "./App";
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import Cart from "./pages/Cart";
-// import Signup from "./pages/SignUp";  
-// import Details from "./pages/Details";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Cart from "./pages/Cart";
+import Signup from "./pages/SignUp";  
+import Details from "./pages/Details";
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Router>
-//       <Routes>
-//         <Route exact path="/" component={App} />
-//         <Route path="/home" component={Home} />
-//         <Route path="/login" component={Login} />
-//         <Route path="/cart" component={Cart} />
-//         <Route path="/signup" component={Signup} />
-//         <Route path="/details/:title" component={Details} />
-//         <Route path="*" component={() => "404 NOT FOUND"} />
-//       </Routes>
-//     </Router>
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <Routes>
+        <Route exact path="/" component={App} />
+        <Route path="/home" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/details/:title" component={Details} />
+        <Route path="*" component={() => "404 NOT FOUND"} />
+      </Routes>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 import { Outlet } from 'react-router-dom';
 import {
@@ -38,6 +37,7 @@ import { setContext } from '@apollo/client/link/context';
 // import store from './utils/store';
 import Navbar from './components/Navbar';
 import './index.css';
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -66,8 +66,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Navbar />
-      <Outlet />
+        <Navbar />
+        <Outlet />
     </ApolloProvider>
   );
 }
