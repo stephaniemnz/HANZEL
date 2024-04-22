@@ -8,12 +8,6 @@ db.once("open", async () => {
 
   const photos = await Photo.insertMany([
     {
-      title: "Girl Noir",
-      description: "young girls face in shadow",
-      image: "/images/HANZEL(9).jpg",
-      price: "200.00 USD",
-    },
-    {
       title: "Shadow Men",
       description: "Business Men walking away in shadows",
       image: "/images/hanzel5.jpg",
@@ -23,12 +17,6 @@ db.once("open", async () => {
       title: "Cirque de Noir",
       description: "Artist balancing on one hand",
       image: "/images/hanzel2.jpg",
-      price: "200.00 USD",
-    },
-    {
-      title: "Curious Squirrel",
-      description: "Squirrel pops its head up in flower field",
-      image: "/images/hanzel3.jpeg",
       price: "200.00 USD",
     },
     {
@@ -44,35 +32,33 @@ db.once("open", async () => {
       price: "200.00 USD",
     },
     {
-      title: 'Champagne Girl',
-      description: 'Woman in beautiful dress, posed.',
-      image: 'r2006668-edit-edit.jpg',
-      price: '200.00 USD'
-    },
-    {
-      title: 'Red Room',
-      image: 'images/R2006838.jpg',
-      price: '250.00 USD'
-    },
-    {
-      title: 'Smokin Bride',
-      image: 'images/R2007223.jpg',
-      price: '200.00 USD'
-    },
-    {
-      title: 'Crowded Room',
-      image: 'images/R2007377.jpg',
-      price: '200.00 USD'
-    },
       title: "Champagne Girl",
       description: "Woman in beautiful dress, posed.",
-      image: "/images/r2006668-edit-edit.jpg",
+      image: "r2006668-edit-edit.jpg",
       price: "200.00 USD",
     },
     {
-      title: "The Great",
-      description: "The Great Wall of China",
-      image: "/images/hanzel7.jpg",
+      title: "Red Room",
+      description: "A man in a red room",
+      image: "images/R2006838.jpg",
+      price: "250.00 USD",
+    },
+    {
+      title: "Smokin Bride",
+      description: "This bride is a smoke show",
+      image: "images/R2007223.jpg",
+      price: "200.00 USD",
+    },
+    {
+      title: "Crowded Room",
+      description: "I think I want to be alone",
+      image: "images/R2007377.jpg",
+      price: "200.00 USD",
+    },
+    {
+      title: "Champagne Girl",
+      description: "Woman in beautiful dress, posed.",
+      image: "/images/r2006668-edit-edit.jpg",
       price: "200.00 USD",
     },
   ]);

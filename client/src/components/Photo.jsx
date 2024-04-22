@@ -53,7 +53,7 @@ const Photo = ({ item }) => {
 
   return (
     <div className="gallery-item">
-      <Link to={`/Details/${item.id}`} style={{ color: 'white' }}>
+      <Link to={`/Details/${item.id}`} style={{ color: 'white', textDecoration: 'none' }}>
         <img src={item.image} alt={item.title} />
         <h3>{item.title}</h3>
         <p>${item.price}</p>
