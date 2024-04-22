@@ -1,7 +1,6 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, {useState} from "react";
+import { useLocation } from "react-router-dom";
 import Photo from "../components/Photo";
-import { useState } from "react";
 import SaleItem from "../components/SaleItem";
 
 const gallery = [
@@ -80,22 +79,6 @@ function Home() {
   const location = useLocation();
   const backgroundClass = location.pathname === '' ? 'home-background' : 'login-background';
 
-
-  // const addToCart = (item) => {
-  //   const existingItem = cart.find((cartItem) => cartItem.id === item.id);
-  //   if (existingItem) {
-  //     setCart(
-  //       cart.map((cartItem) =>
-  //         cartItem.id === item.id
-  //           ? { ...cartItem, quantity: cartItem.quantity + 1 }
-  //           : cartItem
-  //       )
-  //     );
-  //     return;
-  //   } else {
-  //     setCart([...cart, { ...item, quantity: 1 }]);
-  //   }
-  // };
 
   return (
     <div>

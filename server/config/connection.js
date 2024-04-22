@@ -1,5 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/HANZEL-GALLERY');
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/hanzel-gallery"
+);
 
 module.exports = mongoose.connection;
