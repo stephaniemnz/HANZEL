@@ -9,7 +9,7 @@ db.once('open', async () => {
 const photos = await Photo.insertMany ([
     {
       title: 'Girl Noir',
-      description: 'young girls face in shadow',W
+      description: 'young girls face in shadow',
       image: 'HANZEL(9).jpg',
       price: '200.00 USD'
     },
