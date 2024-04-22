@@ -48,7 +48,22 @@ const photos = await Photo.insertMany ([
       description: 'Woman in beautiful dress, posed.',
       image: 'r2006668-edit-edit.jpg',
       price: '200.00 USD'
-    }
+    },
+    {
+      title: 'Red Room',
+      image: 'images/R2006838.jpg',
+      price: '200.00 USD'
+    },
+    {
+      title: 'Smokin Bride',
+      image: 'images/R2007223.jpg',
+      price: '200.00 USD'
+    },
+    {
+      title: 'Crowded Room',
+      image: 'images/R2007377.jpg',
+      price: '200.00 USD'
+    },
   ]);
   
   console.log('photos seeded');
