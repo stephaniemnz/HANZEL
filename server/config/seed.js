@@ -52,7 +52,7 @@ const photos = await Photo.insertMany ([
     {
       title: 'Red Room',
       image: 'images/R2006838.jpg',
-      price: '200.00 USD'
+      price: '250.00 USD'
     },
     {
       title: 'Smokin Bride',
