@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // URL from environment or default to local MongoDB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/hanzel-gallery";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://acuspikecris:MOL628826@clustercris.shb0f7p.mongodb.net/HANZEL-GALLERY";
 
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI, {
