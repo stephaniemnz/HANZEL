@@ -13,13 +13,15 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     introspection: true,
+    context: authMiddleware,
+    playground: true,
 });
 
 const startApolloServer = async () => {
     await server.start();
 
     app.use(express.urlencoded({
-        extended: false
+        extended: true
     }));
 
     app.use(express.json());

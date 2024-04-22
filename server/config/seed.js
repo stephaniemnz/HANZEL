@@ -1,10 +1,10 @@
 const db = require("./connection");
-const { User, Photo } = require("../models");
+const { User, Photos } = require("../models");
 const cleanDB = require("./cleanDB");
 
 db.once("open", async () => {
   await cleanDB("Photos", "photos");
-  await cleanDB("User", "users");
+  await cleanDB("Users", "users");
 
   const photos = await Photo.insertMany([
     {
