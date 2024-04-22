@@ -5,23 +5,13 @@ import Auth from '../utils/auth';
 //
 import { ADD_USER } from '../utils/mutations';
 
-function Signup() {
-  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: ''});
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
-  const location = useLocation();
-  const backgroundClass = location.pathname === '/' ? 'home-background' : 'login-background';
-
-useEffect(() => { 
-  document.body.className = backgroundClass;
-    return () => {
-      document.body.className = '';
-    };
-  }, [backgroundClass]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try{
-    const {data} = await addUser({
+    const mutationResponse = await addUser({
       variables: {
         email: formState.email,
         password: formState.password,
@@ -29,11 +19,8 @@ useEffect(() => {
         lastName: formState.lastName,
       },
     });
-    const token = data.addUser.token;
+    const token = mutationResponse.data.addUser.token;
     Auth.login(token);
-    }       catch (error) {
-      console.error('Signup failed', error);
-    }
   };
 
   const handleChange = (event) => {
@@ -45,15 +32,17 @@ useEffect(() => {
   };
 
   return (
-    <div className="card" style={{ marginTop: '425px', color: 'white'}}>
-      <h2>Join Us</h2>
+    <div className="container my-1">
+      <Link to="/login">← Go to Login</Link>
+
+      <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
           <input
             placeholder="First"
             name="firstName"
-            type="text"
+            type="firstName"
             id="firstName"
             onChange={handleChange}
           />
@@ -63,7 +52,7 @@ useEffect(() => {
           <input
             placeholder="Last"
             name="lastName"
-            type="text"
+            type="lastName"
             id="lastName"
             onChange={handleChange}
           />
@@ -89,10 +78,9 @@ useEffect(() => {
           />
         </div>
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button> 
+          <button type="submit">Submit</button>
         </div>
       </form>
-      <Link style={{ color: 'white'}} to="/login">Already have an account? Login</Link>
     </div>
   );
 }
