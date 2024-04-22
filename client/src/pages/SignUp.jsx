@@ -8,7 +8,17 @@ import { ADD_USER } from '../utils/mutations';
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
+  
+  const location = useLocation();
+    const backgroundClass = location.pathname === '/' ? 'home-background' : 'login-background';
 
+    useEffect(() => {
+      document.body.className = backgroundClass;
+      return () => {
+        document.body.className = '';
+      };  
+    }, [backgroundClass]);
+    
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
@@ -32,7 +42,7 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
+    <div className="container my-1" style={{ color: 'white', marginTop: '500px' }}>
       <Link to="/login">← Go to Login</Link>
 
       <h2>Signup</h2>

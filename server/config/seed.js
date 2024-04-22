@@ -44,9 +44,35 @@ db.once("open", async () => {
       price: "200.00 USD",
     },
     {
+      title: 'Champagne Girl',
+      description: 'Woman in beautiful dress, posed.',
+      image: 'r2006668-edit-edit.jpg',
+      price: '200.00 USD'
+    },
+    {
+      title: 'Red Room',
+      image: 'images/R2006838.jpg',
+      price: '250.00 USD'
+    },
+    {
+      title: 'Smokin Bride',
+      image: 'images/R2007223.jpg',
+      price: '200.00 USD'
+    },
+    {
+      title: 'Crowded Room',
+      image: 'images/R2007377.jpg',
+      price: '200.00 USD'
+    },
       title: "Champagne Girl",
       description: "Woman in beautiful dress, posed.",
       image: "/images/r2006668-edit-edit.jpg",
+      price: "200.00 USD",
+    },
+    {
+      title: "The Great",
+      description: "The Great Wall of China",
+      image: "/images/hanzel7.jpg",
       price: "200.00 USD",
     },
   ]);
