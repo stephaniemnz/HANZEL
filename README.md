@@ -59,3 +59,4 @@ jonlukejenkins2@gmail.com
 ## Credits
 
 Chat GPT and Github Copilot were used to help with some code snippets and debugging.
+Past activities were used for starter code.
