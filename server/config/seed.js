@@ -64,14 +64,24 @@ db.once("open", async () => {
       image: 'images/R2007377.jpg',
       price: '200.00 USD'
     },
-      title: "Champagne Girl",
+    {
+      title: 'Champagne Girl',
       description: "Woman in beautiful dress, posed.",
       image: "/images/r2006668-edit-edit.jpg",
       price: "200.00 USD",
-    },
+    }
   ]);
 
   console.log("photos seeded");
+
+  await User.create({
+    firstName: 'Testing',
+    lastName: 'Testing',
+    email: 'testing@testing.com',
+    password: 'password123'
+  });
+
+  console.log('users seeded');
 
   process.exit();
 });
