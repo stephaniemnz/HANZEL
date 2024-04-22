@@ -115,9 +115,7 @@ const Navbar = () => {
             </Menu.Item>
 
             <Menu.Menu position="right">
-              <Menu.Item>
-                <Input icon="search" placeholder="Search..." />
-              </Menu.Item>
+            
               <Menu.Item
                 name="cart"
                 active={activeItem === "cart"}
