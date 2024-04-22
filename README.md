@@ -1,13 +1,12 @@
 # Hanzel
 
 ## Description
-This React application serves as a personal portfolio for a photographer. It showcases a selection of the photographer's best work. The application is designed to be responsive, providing an optimal viewing experience on both desktops and mobile devices. Visitors can browse through the photo galleries and contact the photographer through an integrated contact form.
+This React application serves as a personal portfolio for a photographer. It showcases a selection of the photographer's best work. The application is designed to be responsive, providing an optimal viewing experience on both desktops and mobile devices. Visitors can browse through the photo galleries and contact the photographer through an integrated contact form.a pucchase a digital Image.
 
 ## Features
 - **Photo Galleries:** Organized by photography type.
-- **Contact Form:** Allows visitors to send messages directly through the website.
+- **Voting:** Allows visitors to like an image so show popularity.
 - **Responsive Design:** Ensures the website looks good on all devices.
-- **About Page:** Provides background information about the photographer.
 
 
 ## Technologies Used

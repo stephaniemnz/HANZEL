@@ -1,40 +1,100 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { useLocation } from "react-router-dom";
 import Photo from "../components/Photo";
-import { useState } from "react";
+import SaleItem from "../components/SaleItem";
 
 const gallery = [
-  { id: 1, title: "Gallery 1", image: "https://via.placeholder.com/150", price: '30.00' },
-  { id: 2, title: "Gallery 2", image: "https://via.placeholder.com/150", price: '40.00' },
-  { id: 3, title: "Gallery 3", image: "https://via.placeholder.com/150", price: '50.00' },
-  { id: 4, title: "Gallery 4", image: "https://via.placeholder.com/150", price: '60.00' },
-  { id: 5, title: "Gallery 5", image: "https://via.placeholder.com/150", price: '70.00' },
-  { id: 6, title: "Gallery 6", image: "https://via.placeholder.com/150", price: '80.00' },
-  { id: 7, title: "Gallery 7", image: "https://via.placeholder.com/150", price: '90.00' },
-  { id: 8, title: "Gallery 8", image: "https://via.placeholder.com/150", price: '100.00' },
+  {
+    id: 1,
+    title: "Cirque de Noir",
+    description: "Artist balancing on one hand",
+    image: "/images/hanzel2.jpg",
+    price: "200.00 USD",
+    upvotes: 0,
+  },
+  {
+    id: 2,
+    title: "Shadow Men",
+    description: "Business Men walking away in shadows",
+    image: "/images/hanzel5.jpg",
+    price: "200.00 USD",
+    upvotes: 5,
+  },
+  {
+    id: 3,
+    title: "Girl Noir",
+    description: "young girls face in shadow",
+    image: "/images/HANZEL(9).jpg",
+    price: "200.00 USD",
+    upvotes: 10,
+  },
+  {
+    id: 4,
+    title: "Curious Squirrel",
+      description: "Squirrel pops its head up in flower field",
+      image: "/images/hanzel3.jpeg",
+      price: "200.00 USD",
+    upvotes: 15,
+  },
+  {
+    id: 5,
+    title: "River or Road?",
+      description: "View of distant mountain with winding river road",
+      image: "/images/hanzel4.jpg",
+      price: "200.00 USD",
+    upvotes: 20,
+  },
+  {
+    id: 6,
+    title: "Dancer pose",
+      description: "Man in a pose on one foot",
+      image: "/images/hanzel6 (1).jpg",
+      price: "200.00 USD",
+    upvotes: 25,
+  },
+  {
+    id: 7,
+    title: "Champagne Girl",
+      description: "Woman in beautiful dress, posed.",
+      image: "/images/r2006668-edit-edit.jpg",
+      price: "200.00 USD",
+    upvotes: 30,
+  },
+  {
+    id: 8,
+    title: "Gallery 8",
+    image: "https://via.placeholder.com/150",
+    price: "100.00",
+    upvotes: 35,
+  },
 ];
 
-function Home() {
-  const [cart, setCart] = useState([]);
+const saleItem = {
+  id: 9,
+  title: "Sale Item",
+  image: "https://via.placeholder.com/150",
+  price: 100.0,
+  salePrice: 50.0,
+  upvotes: 50,
+};
 
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-  };
+function Home() {
+  const [saleStatus, setSaleStatus] = useState(false);
+  // Move the cart into context to share it in global state
+  // const [cart, setCart] = useState([]);
+
+  const location = useLocation();
+  const backgroundClass = location.pathname === '' ? 'home-background' : 'login-background';
+
 
   return (
     <div>
       <h1>HANZEL ORIGINALS</h1>
+      {saleStatus && <SaleItem item={saleItem} />}
       <h2>Ryan Hanzel Photography</h2>
       <div className="gallery">
         {gallery.map((item) => (
-          <div key={item.id} className="gallery-item">
-            <Link to={`/details/${item.id}`}>
-              <Photo item={item} />
-            </Link>
-            <h3>{item.title}</h3>
-            <p>${item.price}</p>
-            <button onClick={() => addToCart(item)}>Add to Cart</button>
-          </div>
+          <Photo item={item} key={item.id} />
         ))}
       </div>
     </div>

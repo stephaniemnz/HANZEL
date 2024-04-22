@@ -1,18 +1,17 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 //
 import { ADD_USER } from '../utils/mutations';
 
-function Signup() {
-  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: ''});
+function Signup(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try{
-    const {data} = await addUser({
+    const mutationResponse = await addUser({
       variables: {
         email: formState.email,
         password: formState.password,
@@ -20,11 +19,8 @@ function Signup() {
         lastName: formState.lastName,
       },
     });
-    const token = data.addUser.token;
+    const token = mutationResponse.data.addUser.token;
     Auth.login(token);
-    }       catch (error) {
-      console.error('Signup failed', error);
-    }
   };
 
   const handleChange = (event) => {
@@ -37,16 +33,16 @@ function Signup() {
 
   return (
     <div className="container my-1">
-      <Link to="/login">Login</Link>
+      <Link to="/login">← Go to Login</Link>
 
-      <h2>Join HANZEL</h2>
+      <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
           <input
             placeholder="First"
             name="firstName"
-            type="text"
+            type="firstName"
             id="firstName"
             onChange={handleChange}
           />
@@ -56,7 +52,7 @@ function Signup() {
           <input
             placeholder="Last"
             name="lastName"
-            type="text"
+            type="lastName"
             id="lastName"
             onChange={handleChange}
           />
