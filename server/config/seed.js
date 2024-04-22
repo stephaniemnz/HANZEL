@@ -1,12 +1,12 @@
 const db = require("./connection");
-const { User, Photo } = require("../models");
+const { User, Photos } = require("../models");
 const cleanDB = require("./cleanDB");
 
 db.once("open", async () => {
   await cleanDB("Photos", "photos");
-  await cleanDB("User", "users");
+  await cleanDB("Users", "users");
 
-  const photos = await Photo.insertMany([
+  const photos = await Photos.insertMany([
     {
       title: "Girl Noir",
       description: "young girls face in shadow",
@@ -51,19 +51,23 @@ db.once("open", async () => {
     },
     {
       title: 'Red Room',
+      description: 'The man in the red room',
       image: 'images/R2006838.jpg',
       price: '250.00 USD'
     },
     {
       title: 'Smokin Bride',
+      description: 'Bride in a wedding dress, smoking a cigarette',
       image: 'images/R2007223.jpg',
       price: '200.00 USD'
     },
     {
       title: 'Crowded Room',
+      description: 'A room full of people',
       image: 'images/R2007377.jpg',
       price: '200.00 USD'
-    },
+    }, 
+    {
       title: "Champagne Girl",
       description: "Woman in beautiful dress, posed.",
       image: "/images/r2006668-edit-edit.jpg",
