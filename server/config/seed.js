@@ -6,7 +6,7 @@ db.once("open", async () => {
   await cleanDB("Photos", "photos");
   await cleanDB("Users", "users");
 
-  const photos = await Photo.insertMany([
+  const photos = await Photos.insertMany([
     {
       title: "Shadow Men",
       description: "Business Men walking away in shadows",
