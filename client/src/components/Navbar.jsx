@@ -71,11 +71,11 @@ const Navbar = () => {
                 Login
               </Menu.Item>
               <Menu.Item
-                name="purchase"
-                active={activeItem === "purchase"}
+                name="cart"
+                active={activeItem === "cart"}
                 onClick={handleItemClick}
                 as={Link}
-                to="/purchase"
+                to="/cart"
               >
                  <Icon name="cart" style={{ color: 'white' }} />
                 Cart
