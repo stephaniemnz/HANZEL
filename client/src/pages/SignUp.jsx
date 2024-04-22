@@ -42,7 +42,7 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1" style={{ marginTop: '500px' }}>
+    <div className="container my-1" style={{ color: 'white', marginTop: '500px' }}>
       <Link to="/login">← Go to Login</Link>
 
       <h2>Signup</h2>

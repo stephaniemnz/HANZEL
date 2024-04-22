@@ -49,6 +49,12 @@ db.once("open", async () => {
       image: "/images/r2006668-edit-edit.jpg",
       price: "200.00 USD",
     },
+    {
+      title: "The Great",
+      description: "The Great Wall of China",
+      image: "/images/hanzel7.jpg",
+      price: "200.00 USD",
+    },
   ]);
 
   console.log("photos seeded");
