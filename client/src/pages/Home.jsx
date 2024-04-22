@@ -67,6 +67,7 @@ const gallery = [
     price: "100.00",
     upvotes: 35,
   },
+  
 ];
 
 const saleItem = {

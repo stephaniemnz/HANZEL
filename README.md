@@ -1,7 +1,7 @@
 # Hanzel
 
 ## Description
-This React application serves as a personal portfolio for a photographer. It showcases a selection of the photographer's best work. The application is designed to be responsive, providing an optimal viewing experience on both desktops and mobile devices. Visitors can browse through the photo galleries and contact the photographer through an integrated contact form.a purchase a digital Image.
+This React application serves as a personal portfolio for a photographer. It showcases a selection of the photographer's best work. The application is designed to be responsive, providing an optimal viewing experience on both desktops and mobile devices. Visitors can browse through the photo galleries and contact the photographer through an integrated contact form to purchase a digital Image.
 
 ## Features
 - **Photo Galleries:** Organized by photography type.
@@ -15,6 +15,7 @@ This React application serves as a personal portfolio for a photographer. It sho
 - **CSS Modules:** For styling components in a modular fashion.
 - **Mongoose:** For data modeling and database management using MongoDB.
 - **Stripe:** For processing payments securely, enabling purchases of photos.
+
 
 ## Setup and Installation
 
@@ -54,3 +55,7 @@ acuspikecrisis@gmail.com
 pjurkin@gmail.com
 stephaniemnz@gmail.com
 jonlukejenkins2@gmail.com
+
+## Credits
+
+Chat GPT and Github Copilot were used to help with some code snippets and debugging.
