@@ -29,6 +29,11 @@ const Navbar = () => {
 
   const isSmallOrMediumScreen = useMediaQuery({ maxWidth: 992 });
 
+  const handleLogout = () => {  
+    localStorage.removeItem('id_token');
+    history.push('/login');
+  }
+
   return (
     <>
       <SalesBanner />
@@ -82,10 +87,7 @@ const Navbar = () => {
               </Menu.Item>
               <Menu.Item
                 name="logout"
-                active={activeItem === "logout"}
-                onClick={handleItemClick}
-                as={Link}
-                to="/logout"
+                onClick={handleLogout}
               >
                 Logout
               </Menu.Item>
@@ -128,10 +130,7 @@ const Navbar = () => {
               </Menu.Item>
               <Menu.Item
                 name="logout"
-                active={activeItem === "logout"}
-                onClick={handleItemClick}
-                as={Link}
-                to="/logout"
+                onClick={handleLogout}  
                 style={{ color: 'white' }}
               >
                 Logout

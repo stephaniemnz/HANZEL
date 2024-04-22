@@ -19,19 +19,24 @@ function Signup(props) {
       };  
     }, [backgroundClass]);
     
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
-  };
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const mutationResponse = await addUser({
+          variables: {
+            email: formState.email,
+            password: formState.password,
+            firstName: formState.firstName,
+            lastName: formState.lastName,
+          },
+        });
+        const token = mutationResponse.data.addUser.token;
+        Auth.login(token);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
 
   const handleChange = (event) => {
     const { name, value } = event.target;

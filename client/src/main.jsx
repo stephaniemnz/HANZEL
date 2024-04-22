@@ -10,6 +10,8 @@ import Cart from "./pages/Cart";
 import Signup from "./pages/SignUp";
 import Details from "./pages/Details";
 import { StoreProvider } from "./Store";
+import {ApolloProvider} from '@apollo/client';
+import client from './client';
 
 const router = createBrowserRouter([
   {
@@ -46,9 +48,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <StoreProvider>
-    <RouterProvider router={router} />
-  </StoreProvider>
-  // </React.StrictMode>
+  <ApolloProvider client={client}> 
+    <StoreProvider>
+      <RouterProvider router={router} />
+    </StoreProvider>
+  </ApolloProvider>
 );
