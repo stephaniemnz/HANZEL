@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, PureComponent } from "react";
 import styled from "styled-components";
 import { Button, Header, Table, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
