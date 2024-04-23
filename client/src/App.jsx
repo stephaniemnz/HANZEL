@@ -1,28 +1,28 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Cart from "./pages/Cart";
-import Signup from "./pages/SignUp";  
-import Details from "./pages/Details";
+// import ReactDOM from "react-dom";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import Home from "./pages/Home";
+// import Login from "./pages/Login";
+// import Cart from "./pages/Cart";
+// import Signup from "./pages/SignUp";  
+// import Details from "./pages/Details";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route exact path="/" component={App} />
-        <Route path="/home" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/details/:title" component={Details} />
-        <Route path="*" component={() => "404 NOT FOUND"} />
-      </Routes>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Router>
+//       <Routes>
+//         <Route exact path="/" component={App} />
+//         <Route path="/home" component={Home} />
+//         <Route path="/login" component={Login} />
+//         <Route path="/cart" component={Cart} />
+//         <Route path="/signup" component={Signup} />
+//         <Route path="/details/:title" component={Details} />
+//         <Route path="*" component={() => "404 NOT FOUND"} />
+//       </Routes>
+//     </Router>
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
 
 import { Outlet } from 'react-router-dom';
 import {

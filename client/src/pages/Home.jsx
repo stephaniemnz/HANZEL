@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,PureComponent} from "react";
 import { useLocation } from "react-router-dom";
 import Photo from "../components/Photo";
 import SaleItem from "../components/SaleItem";
