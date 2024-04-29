@@ -1,14 +1,15 @@
-const { User, Photo, Order } = require('../models');
+const {  Order, Users, Photos } = require('../models');
+const User = require('../models/Users');
 const { signToken, AuthenticationError, Auth } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
     photos: async () => {
-      return await Photo.find();
+      return await Photos.find();
     },
     photo: async (parent, { id }) => {
-      return await Photo.findById(id).populate('photos');
+      return await Photos.findById(id).populate('photos');
     },
     user: async (parent, args, context) => {
       if (context.user) {
@@ -25,7 +26,7 @@ const resolvers = {
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
+        const user = await Users.findById(context.user._id).populate({
           path: 'orders.photos'
         });
 
@@ -68,7 +69,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const user = await Users.create(args);
       const token = signToken(user);
 
       return { token, user };
